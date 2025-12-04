@@ -1,9 +1,13 @@
 from dotenv import load_dotenv
-from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
-from langchain_ollama import ChatOllama
-
 load_dotenv()
+import os
+import sys
+from langchain.agents import initialize_agent, AgentExecutor, AgentType
+from langchain_openai import ChatOpenAI
+from langchain.tools import tool
+from langchain_core.messages import HumanMessage
+from langchain_core.prompts import PromptTemplate
+
 
 
 def main():
@@ -37,5 +41,6 @@ Musk's political activities, views, and statements have made him a polarizing fi
     response = chain.invoke(input={"information": information})
     print(response.content)
 
+   
 if __name__ == "__main__":
     main()
