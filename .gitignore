@@ -206,5 +206,3 @@ langchain-course/.env
 *.env.*.local
 *.env
 langchain-course/.env
-langchain-course/.env
-/langchain-course
