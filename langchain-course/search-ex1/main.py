@@ -48,10 +48,12 @@ def main():
         #     verbose=False,
         # )
        response = agent.invoke({"messages" : HumanMessage(content="What is the weather in Tokyo?")})
+       print(f"Agent response: {response}")
     except TypeError:
         # Fallback: older/newer langchain versions may accept different arg order
+         print(f"Error")
       
-        print(f"Agent response: {response}")
+      
 
 
 if __name__ == "__main__":
