@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 import sys
-from langchain.agents import initialize_agent, AgentExecutor, AgentType
+from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage
@@ -37,21 +37,21 @@ def main():
     # Create the LLM and agent after we've verified the environment
     llm = ChatOpenAI()
     tools = [search_tool]
+    agent = create_agent(llm,tools)
 
     # Use the higher-level initialize_agent helper which handles prompts internally
     try:
-        agent_executor = initialize_agent(
-            tools=tools,
-            llm=llm,
-            agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-            verbose=False,
-        )
+        # agent_executor = initialize_agent(
+        #     tools=tools,
+        #     llm=llm,
+        #     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        #     verbose=False,
+        # )
+       response = agent.invoke({"messages" : HumanMessage(content="What is the weather in Tokyo?")})
     except TypeError:
         # Fallback: older/newer langchain versions may accept different arg order
-        agent_executor = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=False)
-
-    response = agent_executor.run("What is the weather in Tokyo?")
-    print(f"Agent response: {response}")
+      
+        print(f"Agent response: {response}")
 
 
 if __name__ == "__main__":
