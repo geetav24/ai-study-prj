@@ -201,10 +201,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-langchain-course/.env
-langchain-course/.env
+
 *.env.*.local
 *.env
-langchain-course/.env
-langchain-course/.env
-langchain-course/.env
+
+
